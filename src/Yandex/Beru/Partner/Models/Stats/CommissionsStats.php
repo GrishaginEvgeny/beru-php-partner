@@ -2,7 +2,6 @@
 
 namespace Yandex\Beru\Partner\Models\Stats;
 
-use Yandex\Beru\Partner\Models\Order;
 use Yandex\Common\ObjectModel;
 
 class CommissionsStats extends ObjectModel

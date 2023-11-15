@@ -6,8 +6,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use Yandex\Beru\Partner\Exception\ExtendedErrorsException;
 use Yandex\Beru\Partner\Exception\PartnerRequestException;
 use Yandex\Beru\Partner\Models\Response\GetOrdersStats;
-use Yandex\Beru\Partner\Models\Response\GetStatsResultOrders;
-use Yandex\Beru\Partner\Models\Stats\OrdersStats;
 use Yandex\Common\Exception\ForbiddenException;
 use Yandex\Common\Exception\UnauthorizedException;
 
