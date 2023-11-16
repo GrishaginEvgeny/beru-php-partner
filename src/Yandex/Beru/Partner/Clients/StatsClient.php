@@ -16,6 +16,7 @@ class StatsClient extends Client
      *
      * @param $campaignId
      * @param array $filter
+     * @param string $pageToken
      *
      * @throws ForbiddenException
      * @throws ExtendedErrorsException
@@ -23,9 +24,10 @@ class StatsClient extends Client
      * @throws GuzzleException
      * @throws UnauthorizedException
      */
-    public function getOrderStats($campaignId, array $filter = [])
+    public function getOrderStats($campaignId, array $filter = [], $pageToken = null)
     {
-        $resource = 'campaigns/' . $campaignId . '/stats/orders';
+        $baseUrl = 'campaigns/' . $campaignId . '/stats/orders';
+        $resource = !is_null($pageToken) ? "{$baseUrl}?page_token={$pageToken}" : $baseUrl;
 
         $response = $this->sendRequest(
             'POST',
