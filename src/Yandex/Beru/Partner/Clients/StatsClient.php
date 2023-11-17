@@ -16,6 +16,10 @@ class StatsClient extends Client
      *
      * @see https://yandex.ru/dev/market/partner-api/doc/ru/reference/stats/getOrdersStats
      *
+     * note: $filter default value is null because if it's will
+     * be a request with empty array filter ($filter = []),
+     * then the response will receive an error 400 "bad request"
+     *
      * @param $campaignId
      * @param array $filter
      * @param string $pageToken
