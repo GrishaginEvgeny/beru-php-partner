@@ -69,9 +69,7 @@ class StatsClientTest extends TestCase
         /** @var OrderStats[]  $orderStatsAsArray */
         $orderStatsAsArray = $orderStats->getResult()->getOrders()->getAll();
 
-        for ($i=0; $i < count($orderStatsAsArray); $i++)
-        {
-            $test = $orderStatsAsArray[$i];
+        for ($i=0; $i < count($orderStatsAsArray); $i++) {
             $this->assertEquals(
                 $jsonObj->result->orders[$i]->id,
                 $orderStatsAsArray[$i]->getId()
@@ -117,14 +115,12 @@ class StatsClientTest extends TestCase
                 $orderStatsAsArray[$i]->getDeliveryRegion()->getName()
             );
 
-            if (!is_null($orderStatsAsArray[$i]->getItems()))
-            {
+            if (!is_null($orderStatsAsArray[$i]->getItems())) {
                 /** @var OrderItemStats[] $itemsStatsAsArray */
                 $itemsStatsAsArray = $orderStatsAsArray[$i]->getItems()->getAll();
                 $this->checkItems($itemsStatsAsArray, $jsonObj, $i);
             }
-            if (!is_null($orderStatsAsArray[$i]->getInitialItems()))
-            {
+            if (!is_null($orderStatsAsArray[$i]->getInitialItems())) {
                 /** @var OrderItemStats[] $itemsStatsAsArray */
                 $initialItemsStatsAsArray = $orderStatsAsArray[$i]->getInitialItems()->getAll();
                 $this->checkItems($initialItemsStatsAsArray, $jsonObj, $i);
@@ -132,8 +128,7 @@ class StatsClientTest extends TestCase
 
             /** @var PaymentStats[] $paymentsAsArray */
             $paymentsAsArray = $orderStatsAsArray[$i]->getPayments()->getAll();
-            for($n = 0; $n < $orderStatsAsArray[$i]->getPayments()->count(); $n++)
-            {
+            for($n = 0; $n < $orderStatsAsArray[$i]->getPayments()->count(); $n++) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->payments[$n]->id,
                     $paymentsAsArray[$n]->getId()
@@ -159,8 +154,7 @@ class StatsClientTest extends TestCase
                     $paymentsAsArray[$n]->getTotal()
                 );
 
-                if (property_exists($jsonObj->result->orders[$i]->payments[$n], 'paymentOrder'))
-                {
+                if (property_exists($jsonObj->result->orders[$i]->payments[$n], 'paymentOrder')) {
                     $this->assertEquals(
                         $jsonObj->result->orders[$i]->payments[$n]->paymentOrder->id,
                         $paymentsAsArray[$n]->getPaymentOrder()->getId()
@@ -175,8 +169,7 @@ class StatsClientTest extends TestCase
 
             /** @var CommissionStats[] $commissionAsArray */
             $commissionAsArray = $orderStatsAsArray[$i]->getCommissions()->getAll();
-            for($x = 0; $x < $orderStatsAsArray[$i]->getCommissions()->count(); $x++)
-            {
+            for($x = 0; $x < $orderStatsAsArray[$i]->getCommissions()->count(); $x++) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->commissions[$x]->type,
                     $commissionAsArray[$x]->getType()
@@ -198,8 +191,7 @@ class StatsClientTest extends TestCase
      */
     private function checkItems($itemsStatsAsArray, $jsonObj, $i)
     {
-        for($j = 0; $j < count($itemsStatsAsArray); $j++)
-        {
+        for($j = 0; $j < count($itemsStatsAsArray); $j++) {
             $this->assertEquals(
                 $jsonObj->result->orders[$i]->items[$j]->offerName,
                 $itemsStatsAsArray[$j]->getOfferName()
@@ -235,8 +227,7 @@ class StatsClientTest extends TestCase
                 $itemsStatsAsArray[$j]->getWarehouse()->getName()
             );
 
-            for($k = 0; $k < count($itemsStatsAsArray[$j]->getCisList()); $k++)
-            {
+            for($k = 0; $k < count($itemsStatsAsArray[$j]->getCisList()); $k++) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->cisList[$k],
                     $itemsStatsAsArray[$j]->getCisList()[$k]
@@ -245,8 +236,7 @@ class StatsClientTest extends TestCase
 
             /** @var PriceStats[] $pricesAsArray */
             $pricesAsArray = $itemsStatsAsArray[$j]->getPrices()->getAll();
-            for($t = 0; $t < $itemsStatsAsArray[$j]->getPrices()->count(); $t++)
-            {
+            for($t = 0; $t < $itemsStatsAsArray[$j]->getPrices()->count(); $t++) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->prices[$t]->type,
                     $pricesAsArray[$t]->getType()
@@ -265,8 +255,7 @@ class StatsClientTest extends TestCase
 
             /** @var DetailStats[] $detailsAsArray */
             $detailsAsArray = $itemsStatsAsArray[$j]->getDetails()->getAll();
-            for($v = 0; $v < $itemsStatsAsArray[$v]->getDetails()->count(); $v++)
-            {
+            for($v = 0; $v < $itemsStatsAsArray[$v]->getDetails()->count(); $v++) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->details[$v]->itemCount,
                     $detailsAsArray[$v]->getItemCount()
@@ -288,24 +277,21 @@ class StatsClientTest extends TestCase
                 );
             }
 
-            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'initialCount'))
-            {
+            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'initialCount')) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->initialCount,
                     $itemsStatsAsArray[$j]->getInitialCount()
                 );
             }
 
-            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'cofinanceValue'))
-            {
+            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'cofinanceValue')) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->cofinanceValue,
                     $itemsStatsAsArray[$j]->getCofinanceValue()
                 );
             }
 
-            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'cofinanceThreshold'))
-            {
+            if (property_exists($jsonObj->result->orders[$i]->items[$j], 'cofinanceThreshold')) {
                 $this->assertEquals(
                     $jsonObj->result->orders[$i]->items[$j]->cofinanceThreshold,
                     $itemsStatsAsArray[$j]->getCofinanceThreshold()

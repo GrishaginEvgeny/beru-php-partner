@@ -33,7 +33,7 @@ class GetOrdersStats extends Model
     }
 
     /**
-     * @
+     * @return Errors
      */
     public function getErrors()
     {

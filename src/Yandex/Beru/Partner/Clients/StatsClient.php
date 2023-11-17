@@ -14,6 +14,8 @@ class StatsClient extends Client
     /**
      * Get report of orders stat by filter
      *
+     * @see https://yandex.ru/dev/market/partner-api/doc/ru/reference/stats/getOrdersStats
+     *
      * @param $campaignId
      * @param array $filter
      * @param string $pageToken
@@ -24,7 +26,7 @@ class StatsClient extends Client
      * @throws GuzzleException
      * @throws UnauthorizedException
      */
-    public function getOrderStats($campaignId, array $filter = [], $pageToken = null)
+    public function getOrderStats($campaignId, array $filter = null, $pageToken = null)
     {
         $baseUrl = 'campaigns/' . $campaignId . '/stats/orders';
         $resource = !is_null($pageToken) ? "{$baseUrl}?page_token={$pageToken}" : $baseUrl;
