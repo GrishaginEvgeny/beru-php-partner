@@ -1,6 +1,12 @@
 {
   "name": "gwinn/yandex-market",
   "description": "PHP library for Yandex.Market API",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/GrishaginEvgeny/yandex-market-common-php.git"
+    }
+  ],
   "keywords":["yandex","sdk", "market"],
   "type":"library",
   "license": "MIT",
@@ -9,7 +15,7 @@
     "php": ">=5.6",
     "ext-curl": "*",
     "ext-json": "*",
-    "azgalot/yandex-market-common-php": "1.*.*"
+    "azgalot/yandex-market-common-php": "dev-fix-deprecate"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0",
