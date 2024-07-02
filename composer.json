@@ -1,12 +1,6 @@
 {
   "name": "gwinn/yandex-market",
   "description": "PHP library for Yandex.Market API",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/GrishaginEvgeny/yandex-market-common-php.git"
-    }
-  ],
   "keywords":["yandex","sdk", "market"],
   "type":"library",
   "license": "MIT",
