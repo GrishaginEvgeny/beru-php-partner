@@ -1,0 +1,14 @@
+{
+  "notificationType": "ORDER_CANCELLED",
+  "createdAt": "2022-12-29T18:02:01Z",
+  "orderId": 1,
+  "campaignId": 1,
+  "returnId": 1,
+  "returnType": "RETURN",
+  "items": [
+    {
+      "count": 4,
+      "offerId": 2
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "notificationType": "ORDER_RETURN_CREATED",
+  "createdAt": "2022-12-29T18:02:01Z",
+  "orderId": 1,
+  "campaignId": 1,
+  "items": [
+    {
+      "count": 3,
+      "offerId": 1
+    },
+    {
+      "count": 5,
+      "offerId": 2
+    }
+  ]
+}
