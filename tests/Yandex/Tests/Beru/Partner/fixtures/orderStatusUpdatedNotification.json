@@ -1,0 +1,8 @@
+{
+  "notificationType": "ORDER_STATUS_UPDATED",
+  "updatedAt": "2022-12-29T18:02:01Z",
+  "orderId": 1,
+  "campaignId": 1,
+  "status": "PROCESSING",
+  "substatus": "STARTED"
+}
