@@ -199,15 +199,25 @@ class OrderProcessingClient extends Client
      *
      * @param $campaignId
      * @param $orderId
+     * @param string|null $format Label format (A9_HORIZONTALLY, A9, A7, A4)
      * @return \Psr\Http\Message\StreamInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
      * @throws \Yandex\Common\Exception\ForbiddenException
      * @throws \Yandex\Common\Exception\UnauthorizedException
      */
-    public function getOrderLabels($campaignId, $orderId)
+    public function getOrderLabels($campaignId, $orderId, $format = null)
     {
         $resource = 'campaigns/' .$campaignId . '/orders/' . $orderId . '/delivery/labels.json';
+
+        $query = [];
+        if ($format !== null) {
+            $query['format'] = $format;
+        }
+
+        if (!empty($query)) {
+            $resource .= '?' . http_build_query($query);
+        }
 
         return $this->sendRequest(
             'GET',
