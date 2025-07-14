@@ -2,10 +2,12 @@
 
 namespace Yandex\Beru\Partner\Clients;
 
+use Yandex\Beru\Partner\Models\SetExternalOrderIdRequest;
 use Yandex\Beru\Partner\Models\Response\GetUpdateOrderResponse;
 use Yandex\Beru\Partner\Models\Response\GetInfoOrderBoxesResponse;
 use Yandex\Beru\Partner\Models\Response\GetOrdersResponse;
 use Yandex\Beru\Partner\Models\Response\GetOrderResponse;
+use Yandex\Beru\Partner\Models\Response\SetExternalOrderIdResponse;
 use Yandex\Beru\Partner\Models\Response\GetDeliveryServiceResponse;
 
 class OrderProcessingClient extends Client
@@ -223,5 +225,33 @@ class OrderProcessingClient extends Client
             'GET',
             $this->getServiceUrl($resource)
         )->getBody();
+    }
+
+    /**
+     * Transfer external order ID to Yandex.Market
+     *
+     * @see https://yandex.ru/dev/market/partner-api/doc/ru/reference/orders/updateExternalOrderId
+     *
+     * @param $campaignId
+     * @param $orderId
+     * @param array $params
+     * @return SetExternalOrderIdResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Yandex\Beru\Partner\Exception\PartnerRequestException
+     * @throws \Yandex\Common\Exception\ForbiddenException
+     * @throws \Yandex\Common\Exception\UnauthorizedException
+     */
+    public function setExternalOrderId($campaignId, $orderId, array $params = [])
+    {
+        $resource = 'campaigns/' . $campaignId . '/orders/' . $orderId . '/external-id.json';
+        $request = new SetExternalOrderIdRequest($params);
+
+        $response = $this->sendRequest(
+            'POST',
+            $this->getServiceUrl($resource),
+            ['json' => $request->toArray()]
+        );
+
+        return new SetExternalOrderIdResponse($this->getDecodedBody($response->getBody()));
     }
 }
