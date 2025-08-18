@@ -9,6 +9,7 @@ use Yandex\Beru\Partner\Models\Response\GetOrdersResponse;
 use Yandex\Beru\Partner\Models\Response\GetOrderResponse;
 use Yandex\Beru\Partner\Models\Response\SetExternalOrderIdResponse;
 use Yandex\Beru\Partner\Models\Response\GetDeliveryServiceResponse;
+use Yandex\Beru\Partner\Models\Response\GetRefundResponse;
 
 class OrderProcessingClient extends Client
 {
